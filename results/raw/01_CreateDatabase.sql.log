@@ -1,0 +1,4 @@
+﻿Database SqlServerOPPODemo already exists. Configuration statements will converge it.
+Changed database context to 'SqlServerOPPODemo'.
+Changed database context to 'SqlServerOPPODemo'.
+SqlServerOPPODemo is at compatibility level 170 and OPTIONAL_PARAMETER_OPTIMIZATION = ON.

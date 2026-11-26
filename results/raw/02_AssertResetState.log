@@ -1,0 +1,9 @@
+﻿Changed database context to 'SqlServerOPPODemo'.
+TEST_RESULT|ResetDatabaseRemains|PASS|SqlServerOPPODemo is the current database
+TEST_RESULT|ResetCompatibility170|PASS|compatibility_level=170
+TEST_RESULT|ResetOppoStillOn|PASS|OPTIONAL_PARAMETER_OPTIMIZATION=1
+TEST_RESULT|ResetOrdersEmpty|PASS|orders=0
+TEST_RESULT|ResetCustomersEmpty|PASS|customers=0
+TEST_RESULT|ResetSearchIndexRemoved|PASS|index_count=0
+TEST_RESULT|ResetSearchProceduresRemoved|PASS|procedure_count=0
+TEST_TOTALS|passed=7|failed=0|skipped=0|not_run=0

@@ -1,0 +1,7 @@
+* text=auto
+*.sql text eol=crlf
+*.ps1 text eol=crlf
+*.md text eol=lf
+*.sqlplan text
+*.xml text
+.env.example text eol=lf

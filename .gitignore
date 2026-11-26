@@ -1,0 +1,38 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.user
+*.suo
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+
+# Build, test, and editor output
+bin/
+obj/
+.vs/
+.vscode/
+TestResults/
+artifacts/
+*.trx
+
+# Logs and temporary files
+logs/
+*.log
+!results/raw/*.log
+*.tmp
+*.temp
+_tmp/
+
+# Database files and backups — the demo database lives in LocalDB, not in git
+*.mdf
+*.ldf
+*.ndf
+*.bak
+*.trn
+
+# OS clutter
+Thumbs.db
+Desktop.ini
+.DS_Store

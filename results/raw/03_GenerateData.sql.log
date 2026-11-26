@@ -1,0 +1,27 @@
+﻿Changed database context to 'SqlServerOPPODemo'.
+Reloading deterministic data.
+Customers=10000 Orders=500000 SelectiveCustomerId=125 SelectiveOrderCount=20
+Loaded orders 1 through 100000.
+Loaded orders 100001 through 200000.
+Loaded orders 200001 through 300000.
+Loaded orders 300001 through 400000.
+Loaded orders 400001 through 500000.
+Data load finished.
+CustomerRows        |OrderRows           |SelectiveCustomerOrders
+--------------------|--------------------|-----------------------
+               10000|              500000|                     20
+CustomersWithOrders |MinOrdersPerCustomer|MaxOrdersPerCustomer|AvgOrdersPerCustomerWithOrders
+--------------------|--------------------|--------------------|------------------------------
+                6264|                   1|                5555|                            79
+CustomerId |OrderRows           
+-----------|--------------------
+          1|                5555
+          2|                5000
+          3|                5000
+          4|                5000
+          5|                5000
+          6|                5000
+          7|                5000
+          8|                5000
+          9|                5000
+         10|                5000

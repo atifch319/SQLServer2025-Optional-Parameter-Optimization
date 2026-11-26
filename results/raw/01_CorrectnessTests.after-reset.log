@@ -1,0 +1,18 @@
+﻿Changed database context to 'SqlServerOPPODemo'.
+TEST_RESULT|EngineMajorVersion17|PASS|version=17.0.4025.3; edition=Express Edition (64-bit); major=17
+TEST_RESULT|CompatibilityLevel170|PASS|compatibility_level=170
+TEST_RESULT|OppoScopedConfigurationOn|PASS|OPTIONAL_PARAMETER_OPTIMIZATION=1
+TEST_RESULT|BeforeProcedureUsesDisableHint|PASS|hint presence checked
+TEST_RESULT|AfterProcedureOmitsDisableHint|PASS|hint absence checked
+TEST_RESULT|DemoDataMatchesSettings|PASS|customers=10000/10000; orders=500000/500000
+TEST_RESULT|Customer125Exists|PASS|customer_125_rows=1
+TEST_RESULT|SelectiveCustomerOrderCount|PASS|customer=125; orders=20; expected=20
+TEST_RESULT|CustomerIndexShape|PASS|customer_key=1; included_orderdate_totalamount=2
+TEST_RESULT|NullFilterReturnsAllOrders|PASS|missing_from_result=0; extra_in_result=0
+TEST_RESULT|SelectiveFilterReturnsOnlyThatCustomer|PASS|returned=20; wrong_customer_rows=0; table_rows=20
+TEST_RESULT|BeforeAndAfterMatchForNull|PASS|only_before=0; only_after=0
+TEST_RESULT|BeforeAndAfterMatchForSelective|PASS|only_before=0; only_after=0
+TEST_RESULT|QueryTextMatchesExceptHint|PASS|SELECT, WHERE, and absence of ORDER BY compared after whitespace removal
+TEST_RESULT|EnabledQueryHasOppoMetadata|PASS|query_store_optional_predicate=2; plan_cache=1; captured_plans=1
+TEST_RESULT|DisabledQueryHasNoOppoMetadata|PASS|query_store_optional_predicate=0; plan_cache=0
+TEST_TOTALS|passed=16|failed=0|skipped=0|not_run=0

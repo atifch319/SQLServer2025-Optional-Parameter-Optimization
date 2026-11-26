@@ -1,0 +1,150 @@
+﻿Changed database context to 'SqlServerOPPODemo'.
+=== QUERY STORE STATE ===
+desired_state_desc                                          |actual_state_desc                                           |readonly_reason|current_storage_size_mb|query_capture_mode_desc                                     
+------------------------------------------------------------|------------------------------------------------------------|---------------|-----------------------|------------------------------------------------------------
+READ_WRITE                                                  |READ_WRITE                                                  |              0|                      1|ALL                                                         
+=== PROCEDURE STATEMENTS ===
+query_id            |procedure_name                                                                                                                  |query_hash        |query_sql_text                                                                                                                                                                                                                                                  |plan_id             |plan_type  |plan_type_desc                                              |count_compiles      |last_compile_duration_microseconds
+--------------------|--------------------------------------------------------------------------------------------------------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------|------------------------------------------------------------|--------------------|----------------------------------
+                  45|SearchOrders_After                                                                                                              |0xCE715BD48FC558C9|(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL                                                                 |                  52|          1|Dispatcher Plan                                             |                   6|                              2470
+                  70|SearchOrders_After                                                                                                              |0xCE715BD48FC558C9|(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL                                                                 |                  77|          1|Dispatcher Plan                                             |                   1|                              2295
+                  41|SearchOrders_Before                                                                                                             |0x18D9BAFD2E0E8361|(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL
+    OPTION (USE HINT('DISABLE_OPTIONAL_PARAMETER_OPTIMIZATION')|                  48|          0|Compiled Plan                                               |                   6|                              3161
+=== PARENT, DISPATCHER, AND VARIANT LINKS ===
+parent_query_id     |parent_procedure_name                                                                                                           |parent_query_text                                                                                                                                                                                                                                               |dispatcher_plan_id  |dispatcher_plan_type                                        |variant_query_id    |variant_query_text                                                                                                                                                                                                                                              |variant_text_contains_optional_predicate|variant_plan_id     |variant_plan_type                                           |variant_count_compiles|variant_last_compile_duration_microseconds
+--------------------|--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|------------------------------------------------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|--------------------|------------------------------------------------------------|----------------------|------------------------------------------
+                  45|SearchOrders_After                                                                                                              |(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL                                                                 |                  52|Dispatcher Plan                                             |                  46|(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL option (PLAN PER VALUE(ObjectID = 1397580017, QueryVariantID = 2|yes                                     |                  53|Query Variant Plan                                          |                     5|                                      3364
+                  45|SearchOrders_After                                                                                                              |(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL                                                                 |                  52|Dispatcher Plan                                             |                  48|(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL option (PLAN PER VALUE(ObjectID = 1397580017, QueryVariantID = 1|yes                                     |                  55|Query Variant Plan                                          |                     5|                                      3669
+                  70|SearchOrders_After                                                                                                              |(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL                                                                 |                  77|Dispatcher Plan                                             |                  71|(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL option (PLAN PER VALUE(ObjectID = 1397580017, QueryVariantID = 1|yes                                     |                  78|Query Variant Plan                                          |                     1|                                      2295
+=== VARIANT RUNTIME STATS (WEIGHTED ACROSS INTERVALS) ===
+plan_id             |parent_procedure_name                                                                                                           |count_executions    |weighted_avg_duration_microseconds|weighted_avg_cpu_microseconds|weighted_avg_logical_io_reads|weighted_avg_rowcount   
+--------------------|--------------------------------------------------------------------------------------------------------------------------------|--------------------|----------------------------------|-----------------------------|-----------------------------|------------------------
+                  53|SearchOrders_After                                                                                                              |                  11|                         1963662.0|           1943435.0909090908|           518156.09090909088|                500000.0
+                  55|SearchOrders_After                                                                                                              |                  11|                350.27272727272725|                        298.0|                         19.0|                    20.0
+                  78|SearchOrders_After                                                                                                              |                   1|                             888.0|                        888.0|                          3.0|                    20.0
+=== QUERY TEXT CONTAINING SYSTEM-GENERATED OPPO MARKERS ===
+query_text_id       |query_sql_text                                                                                                                                                                                                                                                  
+--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                  45|(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL option (PLAN PER VALUE(ObjectID = 1397580017, QueryVariantID = 2
+                  47|(@CustomerId int)SELECT
+        OrderId,
+        CustomerId,
+        OrderDate,
+        TotalAmount
+    FROM dbo.Orders
+    WHERE CustomerId = @CustomerId
+       OR @CustomerId IS NULL option (PLAN PER VALUE(ObjectID = 1397580017, QueryVariantID = 1
+                  50|INSERT dbo.CapturedPlan (ScenarioName, ParameterState, OppoStatus, PlanSource, PlanXml)
+SELECT
+    CONCAT(N'Cache_', COALESCE(OBJECT_NAME(st.objectid), N'AdHoc')),
+    N'Cached',
+    CASE
+        WHEN OBJECT_NAME(st.objectid) = N'SearchOrders_After' T
+                  52|UPDATE dbo.CapturedPlan
+SET HasOptionalPredicate =
+    CASE
+        WHEN PlanXml IS NOT NULL
+         AND
+         (
+             CAST(PlanXml AS nvarchar(max)) LIKE N'%optional_predicate%'
+             OR CAST(PlanXml AS nvarchar(max)) LIKE N'%Opti
+                  53|SELECT
+    CaptureId,
+    ScenarioName,
+    ParameterState,
+    OppoStatus,
+    PlanSource,
+    QueryVariantId,
+    HasDispatcher,
+    HasOptionalPredicate,
+    CASE
+        WHEN StatementText LIKE N'%PLAN PER VALUE%' THEN N'yes'
+        ELSE N'
+                  64|SELECT
+    OBJECT_NAME(parent_query.object_id) AS parent_procedure,
+    variant_link.dispatcher_plan_id,
+    variant_link.query_variant_query_id,
+    CASE WHEN variant_text.query_sql_text LIKE N'%optional_predicate%' THEN 1 ELSE 0 END AS has_optional_p
+                  67|SELECT TOP (5) OBJECT_NAME(st.objectid) AS obj, cp.objtype, cp.usecounts, CASE WHEN CAST(qp.query_plan AS nvarchar(max)) LIKE N'%optional_predicate%' THEN 1 ELSE 0 END AS has_oppo, SUBSTRING(CAST(qp.query_plan AS nvarchar(max)), NULLIF(CHARINDEX(N'optional
+                  81|SELECT
+    parent_query.query_id AS parent_query_id,
+    OBJECT_NAME(parent_query.object_id) AS parent_procedure_name,
+    parent_text.query_sql_text AS parent_query_text,
+    variant_link.dispatcher_plan_id,
+    dispatcher_plan.plan_type_desc AS disp
+                  83|SELECT
+    t.query_text_id,
+    t.query_sql_text
+FROM sys.query_store_query_text AS t
+WHERE t.query_sql_text LIKE N'%optional_predicate%'
+   OR t.query_sql_text LIKE N'%PLAN PER VALUE%'                                                                  

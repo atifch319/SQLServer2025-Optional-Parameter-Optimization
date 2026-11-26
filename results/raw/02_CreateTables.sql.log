@@ -1,0 +1,5 @@
+﻿Changed database context to 'SqlServerOPPODemo'.
+Tables are ready. Current demo settings:
+CustomerCount|OrderCount |SelectiveCustomerId|SelectiveOrderCount|MeasuredRuns
+-------------|-----------|-------------------|-------------------|------------
+        10000|     500000|                125|                 20|           5

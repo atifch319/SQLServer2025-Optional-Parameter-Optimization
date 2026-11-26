@@ -1,0 +1,16 @@
+﻿=== PREREQUISITE CHECK (READ ONLY) ===
+ProductVersion: 17.0.4025.3
+ProductLevel: RTM
+ProductUpdateLevel: CU3
+Edition: Express Edition (64-bit)
+EngineEdition: 4
+IsLocalDB: 1
+ServerName: DESKTOP-J9EVO3T\LOCALDB#7CD4944F
+Microsoft SQL Server 2025 (RTM-CU3) (KB5077896) - 17.0.4025.3 (X64) 
+	Feb 25 2026 20:54:27 
+	Copyright (C) 2025 Microsoft Corporation
+	Express Edition (64-bit) on Windows 10 Pro 10.0 <X64> (Build 26300: ) (Hypervisor)
+
+Prerequisite passed: product major version is 17 or higher.
+Engine version and database compatibility level are different settings.
+This check does not read or alter any user database.
